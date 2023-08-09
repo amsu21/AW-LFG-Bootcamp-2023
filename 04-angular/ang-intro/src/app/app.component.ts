@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  templateUrl: './app/component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'ang-intro';
   userChoice : string = '';
   
-  constructor(){
+  constructor() {
     setTimeout(() => {
       this.title = 'New-Ang-Intro'
     }, 5000);
