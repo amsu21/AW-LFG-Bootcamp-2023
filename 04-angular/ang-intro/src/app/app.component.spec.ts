@@ -25,3 +25,15 @@ xdescribe('AppComponent', () => {
     expect(compiled.querySelector('.content span')?.textContent).toContain('ang-intro app is running!');
   });
 });
+
+function xdescribe(arg0: string, arg1: () => void) {
+  throw new Error('Function not implemented.');
+}
+function beforeEach(arg0: () => any) {
+  throw new Error('Function not implemented.');
+}
+
+function expect(app: any) {
+  throw new Error('Function not implemented.');
+}
+
