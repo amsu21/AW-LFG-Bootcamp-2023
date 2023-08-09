@@ -7,6 +7,9 @@ import { BugApiService } from "./bugApi.service";
 /* Using the BugApi (remote server persistance) */
 @Injectable()
 export class BugsService {
+    get(bugId: number): Bug {
+        throw new Error('Method not implemented.');
+    }
 
     public bugs: Bug[] = [];
 
