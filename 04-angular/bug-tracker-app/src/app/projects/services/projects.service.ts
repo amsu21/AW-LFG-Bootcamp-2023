@@ -11,7 +11,7 @@ export class ProjectsService {
 
   constructor(private projectApi : ProjectsApiService) { }
 
-  load(){
+  load() {
     this.projectApi
       .load()
       .subscribe(projects => this.projects = projects);
