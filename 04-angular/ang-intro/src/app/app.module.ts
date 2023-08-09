@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 //for server communication using "HttpClient" service
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 
 /* for implementing the routing capabilities */
 import { RouterModule, Routes } from "@angular/router";
@@ -26,17 +26,28 @@ import { CartStatsComponent } from './shopping-cart/components/cart-stats/cart-s
 import { BugsComponent } from './bugs/bugs.component';
 import { PathNotFoundCompnent } from './path-not-found.component';
 import { HomeComponent } from './home.component';
+import { LoginComponent } from './auth/login.component';
+import { LogInGuard } from './auth/login-guard';
+import { HttpLogInterceptor } from "./utils/httpLoginterceptor";
+import { HttpAuthorizeInterceptor } from "./utils/httpAuthorizeInterceptor";
 
 /* define the routes */
 const routes : Routes = [
   { path: "", component: HomeComponent },
-  { path: "greeter", component : GreeterComponent},
-  { path: "calculator", component: CalculatorComponent },
-  { path: "calculator-2", component: Calculator2Component },
-  { path: "salary-calculator", component: SalaryCalculatorComponent },
+  { path : "login", component : LoginComponent},
+  { path: "greeter", component : GreeterComponent, canActivate : [LogInGuard] /* canActivate guard is used to check if the route can be activated */},
+  { path: "calculator", component: CalculatorComponent , canActivate : [LogInGuard]},
+  { path: "calculator-2", component: Calculator2Component , canActivate : [LogInGuard]},
+  { path: "salary-calculator", component: SalaryCalculatorComponent , canActivate : [LogInGuard]},
+  { path: "bugs", component: BugsComponent, canActivate: [LogInGuard] },
   /* { path: "**", component: PathNotFoundCompnent } */
   {path : "**", redirectTo : ""}
 ]
+
+export const httpInterceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: HttpLogInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: HttpAuthorizeInterceptor, multi: true },
+];
 
 @NgModule({
   /* All the UI entities (component, directive, pipe) */
@@ -55,7 +66,8 @@ const routes : Routes = [
     CartStatsComponent,
     BugsComponent,
     PathNotFoundCompnent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   /* All the dependency modules  */
   imports: [
@@ -69,7 +81,9 @@ const routes : Routes = [
     { provide : SalaryCalculatorModel, useClass : SalaryCalculatorModel },
     // { provide :SalaryCalculatorModel, useClass : SalaryCalculatorModelV2 }
     ProductsService,
-    CartService
+    CartService,
+    // register the http interceptors
+    httpInterceptorProviders
   ],
 
   /* top level components */
