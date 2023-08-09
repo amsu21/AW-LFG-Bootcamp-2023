@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 
 interface Bug {
   id : number,
-  name : string,
+  title : string,
   isClosed : boolean,
   createdAt : Date
 }
@@ -20,19 +21,34 @@ export class BugsComponent {
 
 
 
-  constructor(private httpClient : HttpClient){
+  constructor(private httpClient : HttpClient, private authService : AuthService/* to access the accessToken to be sent with the http request */){
 
   }
 
   onBtnGetBugsClick() {
+    // No need to add the header in each and every request as the interceptor (HttpAuthorizeInterceptor) will take care of it.
+    /*
+    // get the access token from the service
+    const accessToken = this.authService.AccessToken
+
+    // create the header object to be passed with the http request
+    const headers = new HttpHeaders({
+      "authorization" : `Bearer ${accessToken}`
+    }); 
     const bugs$ = this.httpClient
-      .get<Bug[]>('http://localhost:3000/bugs')  
+      .get<Bug[]>('http://localhost:3000/bugs', { headers : headers }) // passing the headers with the request
     bugs$.subscribe(bugs => console.table(bugs))
+    */
+
+    this.httpClient
+      .get<Bug[]>('http://localhost:3000/bugs')
+      .subscribe(bugs => console.table(bugs))
   }
   
   onBtnCreateNewClick() {
+   
     const newBugData : NewBug  = {
-      name : 'Dummy Data - ' + Math.round(Math.random() * 100),
+      title : 'Dummy Data - ' + Math.round(Math.random() * 100),
       createdAt : new Date(),
       isClosed : false
     }
@@ -44,7 +60,7 @@ export class BugsComponent {
   onBtnUpdateBugClick() {
     const bugToUpdate : Bug = {
       id : 6,
-      name: 'Updated Bug - ' + Math.round(Math.random() * 100),
+      title: 'Updated Bug - ' + Math.round(Math.random() * 100),
       isClosed : false,
       createdAt : new Date()
     }
