@@ -7,3 +7,11 @@ multi_line = '''
 # STRINGS
 print(line)
 print(multi_line)
+
+# CONCATENATION
+print("string - 1" + "string - 2")
+
+x = 100
+y = 200
+print("sum of {} and {} is {}".format(z, y, x + y))
+print()
