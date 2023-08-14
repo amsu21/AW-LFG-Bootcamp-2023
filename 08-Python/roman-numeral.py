@@ -6,7 +6,7 @@ rom = ('M',  'CM', 'D', 'CD','C', 'XC','L','XL','X','IX','V','IV','I')
 
 result = ''
 
-# LOOP THROUGH NUMBER AND FIND CORRESPONDING LETTER
+# FIND CORRESPONDING LETTER
 for i in range(len(num)) :
     count = int(n / num[i])
     result += str(rom[i] * count)
