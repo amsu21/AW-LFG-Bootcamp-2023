@@ -13,5 +13,5 @@ print("string - 1" + "string - 2")
 
 x = 100
 y = 200
-print("sum of {} and {} is {}".format(z, y, x + y))
+print("sum of {} and {} is {}".format(x, y, x + y))
 print()
