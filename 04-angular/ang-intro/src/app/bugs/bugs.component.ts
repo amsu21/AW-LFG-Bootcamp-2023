@@ -16,12 +16,10 @@ type NewBug = Omit<Bug, "id">
   templateUrl: './bugs.component.html',
   styleUrls: ['./bugs.component.css']
 })
+
 export class BugsComponent {
 
-
-
-
-  constructor(private httpClient : HttpClient, private authService : AuthService/* to access the accessToken to be sent with the http request */){
+  constructor(private httpClient : HttpClient, public authService : AuthService/* to access the accessToken to be sent with the http request */) {
 
   }
 
@@ -46,7 +44,6 @@ export class BugsComponent {
   }
   
   onBtnCreateNewClick() {
-   
     const newBugData : NewBug  = {
       title : 'Dummy Data - ' + Math.round(Math.random() * 100),
       createdAt : new Date(),
