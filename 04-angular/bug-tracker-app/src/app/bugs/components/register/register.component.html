@@ -1,0 +1,31 @@
+<h3>Register</h3>
+<hr>
+<section>
+    <div class="field">
+        <label for="">Email Id :</label>
+        <input type="text" #txtEmailId (input)="email = txtEmailId.value">
+    </div>
+    <div class="field">
+        <label for="">First Name :</label>
+        <input type="text" #txtFirstName (input)="firstName = txtFirstName.value">
+    </div>
+    <div class="field">
+        <label for="">Last Name :</label>
+        <input type="text" #txtLastName (input)="lastName = txtLastName.value">
+    </div>
+    <div class="field">
+        <label for="">Phone Number :</label>
+        <input type="text" #txtPhone (input)="phoneNumber = txtPhone.value">
+    </div>
+    <div class="field">
+        <label for="">Password :</label>
+        <input type="password" #txtPassword (input)="password = txtPassword.value">
+    </div>
+    <div class="field">
+        <label for="">Confirm Password :</label>
+        <input type="password" #txtPasswordConfirm (input)="passwordConfirm = txtPasswordConfirm.value">
+    </div>
+    <div class="field">
+        <button (click)="onRegisterClick()">Register</button>
+    </div>
+</section>
