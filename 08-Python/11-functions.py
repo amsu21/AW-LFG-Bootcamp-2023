@@ -108,3 +108,14 @@ import functools
 print(functools.reduce(lambda x,y: x + y, nos_list, 0))
 
 # Find the number of odd & even numbers from nos_list using reduce
+
+even_count, odd_count = 0, 0
+
+for numbers in nos_list:
+    if numbers % 2 == 0:
+        even_count += 1
+    else:
+        odd_count += 1
+
+print("The even numbers in the list are: ", even_count)
+print("The odd numbers in the list are: ", odd_count)
