@@ -1,0 +1,2 @@
+def legnth(str):
+    return 
