@@ -20,5 +20,8 @@ class Employee:
     
     def __repr__(self):
         return f"firstName = {self.first_name}, lastName = {self.last_name}"
+    
+    def mark_attendance(self):
+        self.days_worked += 1
 
 emp = Employee()
