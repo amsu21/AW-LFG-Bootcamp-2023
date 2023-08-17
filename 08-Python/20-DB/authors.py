@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, MetaData, Table, select
+from sqlalchemy import create_engine, MetaData, Table, select, insert, update, delete
 
 # create an instane of sqlalchemy engine
 engine = create_engine("sqlite:///./books.sqlite")
@@ -19,3 +19,19 @@ print(result.all())
 insert_statement = insert(author_table).values(first_name="Amsu", last_name="Warner")
 result = conn.execute(insert_statement)
 print(result)
+
+# UPDATE THE DATABASE
+def update_author(id, firstName, lastName):
+    update_stmt = (
+        update(author_table)
+            .where(author_table.c.author_id == id)
+            .values(first_name = firstName, last_name = lastName)
+    )
+    conn.execute(update_stmt)
+    conn.commit()
+
+
+def delete_author(id):
+    delete_stmt = delete(author_table).where(author_table.c.author_id == id)
+    conn.execute(delete_stmt)
+    conn.commit()
