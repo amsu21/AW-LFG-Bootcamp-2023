@@ -15,7 +15,6 @@ api = Api(app)
 
 
 # URI's
-
 api.add_resource(Projects, '/projects')
 api.add_resource(Project, '/projects/<int:id>')
 

@@ -1,6 +1,5 @@
 from db import db
 from datetime import datetime
-from sqlalchemy import Integer, String
 
 class ProjectModel(db.Model):
     __tablename__ = 'projects'

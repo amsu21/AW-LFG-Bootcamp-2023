@@ -4,7 +4,7 @@ from flask_restful import Resource, reqparse, inputs
 from models.projects import ProjectModel
 
 new_project_parser = reqparse.RequestParser()
-new_project_parser.add_argument('name',
+new_project_parser.add_argument('title',
                                 type=str,
                                 help='The field cannot be blank',
                                 required=True)
