@@ -38,8 +38,6 @@ def missing_token_callback(error):
         'error' : 'authorization_required'
     }), 401
 
-
-
 api.add_resource(Bugs, '/bugs')
 api.add_resource(Bug, '/bugs/<int:id>')
 api.add_resource(UserRegister, '/register')
