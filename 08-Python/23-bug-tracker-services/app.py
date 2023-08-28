@@ -35,7 +35,7 @@ def invalid_token_callback(error):
 def missing_token_callback(error):
     return jsonify({
         'description' : 'Request does not contain an access token',
-        'error' : 'authorizatin_required'
+        'error' : 'authorization_required'
     }), 401
 
 
