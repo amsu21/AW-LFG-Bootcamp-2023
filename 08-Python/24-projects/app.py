@@ -1,5 +1,7 @@
 from flask import Flask, jsonify
 from flask_restful import Api
+from resources.projects import Projects
+from resources.project import Project
 
 from db import db
 
@@ -14,7 +16,8 @@ api = Api(app)
 
 # URI's
 
-api.add_resource
+api.add_resource(Projects, '/projects')
+api.add_resource(Project, '/projects/<int:id>')
 
 if __name__ == '__main__':
     db.init_app(app)
