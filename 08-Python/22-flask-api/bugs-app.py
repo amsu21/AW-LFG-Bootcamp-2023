@@ -45,8 +45,11 @@ def home():
     #return "Hi there!"
     return render_template('index.html')
 
-@app.route('/bugs')
+@app.route('/bugs', methods=['GET'])
 def get_bugs():
+    print("ALL DA BUGS")
+    print()
+    print(bugs)
     return jsonify(bugs)
 
 @app.route('/bugs', methods=['POST'])
