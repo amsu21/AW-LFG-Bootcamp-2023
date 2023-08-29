@@ -25,7 +25,8 @@ class Bug(Resource):
 
     @jwt_required()
     def get(self, id):
-        bug_from_db = BugModel.get_by_id(id)  # data from db
+        # DATA FROM DB
+        bug_from_db = BugModel.get_by_id(id)  
         return jsonify(bug_from_db.to_json())
 
     @jwt_required()
