@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask_swagger_ui import get_swaggerui_blueprint
 from flask_restful import Api
 from resources.bugs import Bugs
 from resources.bug import Bug
@@ -8,10 +9,12 @@ from flask_jwt_extended import JWTManager
 from db import db
 
 app = Flask(__name__)
+app.register_blueprint(get_swaggerui_blueprint)
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./bug-tracker.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
 app.config['BUNDLE_ERRORS'] = True #global setting for all the reqparsers in the app
+
 api = Api(app)
 
 app.config['JWT_SECRET_KEY'] = 'lincoln'
