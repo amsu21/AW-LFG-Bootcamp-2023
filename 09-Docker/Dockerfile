@@ -9,6 +9,9 @@ RUN apt-get update
 WORKDIR /usr/amsu
 RUN touch dummy.txt
 
+COPY ./noted.md .
+
+ADD https://github.com/amsu21/AW-LFG-Bootcamp-2023.git .
 
 # PRINTING TO THE CONSOLE
 CMD [ "echo", "THIS IS CMD!" ]
