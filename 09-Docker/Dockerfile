@@ -1,6 +1,14 @@
+# GRABBING UBUNTU
 FROM ubuntu
 
+# COMMANDS ARE EXECUTED WHEN IMAGE IS MADE
 RUN echo "YO DOCKER!!!!!"
 RUN apt-get update
 
+# SETIING THE FILE PATH FOR THE FILE
+WORKDIR /usr/amsu
+RUN touch dummy.txt
+
+
+# PRINTING TO THE CONSOLE
 CMD [ "echo", "THIS IS CMD!" ]
