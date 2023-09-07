@@ -1,0 +1,42 @@
+# KEY VALUE PAIRS
+FirstName: Amsu
+LastName: "Warner"
+MiddleName: 'Baasir'
+Age: 24
+GPA: 3.2
+Male: True
+CurrentDate: 09-7-2023
+
+
+# YAML LISTS
+Students:
+  - Amsu
+  - Warner
+  - James
+
+# Products: [Pen, Pencil, Notebook]
+
+Products:
+  - Pen:
+      Id: P101
+      Name: Fountain Pen
+      Cost: 10
+      Categories:
+        - Stationary
+        - Gift
+      Description: |
+        A stationary item
+        Very useful during academic studies
+
+  - Pencil:
+      Id: P102
+      Name: Plotting Pencil
+      Cost: 5
+      Categories:
+        - Stationary
+        - Gift
+      Description: >
+        In in pariatur laborum adipisicing voluptate cupidatat aliqua anim enim commodo irure esse cupidatat.
+        Aliqua exercitation nisi incididunt tempor magna officia ad et proident consequat eu.
+        Tempor sint minim pariatur excepteur ipsum adipisicing sunt aliqua in aute est.
+
